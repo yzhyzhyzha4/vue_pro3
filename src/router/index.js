@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import login from '../views/login.vue'
-import home from '../views/home.vue'
+import home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
@@ -29,6 +29,7 @@ router.beforeEach((to, from, next) => {
         window.sessionStorage.removeItem('token')
         return next()
     } else {
+        console.log(window.sessionStorage.getItem('token'));
         if (!window.sessionStorage.getItem('token')) {
             window.sessionStorage.removeItem('token')
             return next('/login');

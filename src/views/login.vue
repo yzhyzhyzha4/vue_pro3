@@ -66,6 +66,7 @@
                                 message: '登录成功'
                             })
                             window.sessionStorage.setItem('token',ret.data.token)
+                            this.$router.push('/home')
                         }
                     } else {
                         return false;
