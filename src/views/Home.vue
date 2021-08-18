@@ -9,21 +9,31 @@
             <el-button class="header-button" type="success" @click="tuichu">退出登录</el-button>
         </header>
         <div class="body">
-            <div class="body-left"></div>
-            <div class="body-main"></div>
+            <div class="body-left">
+                <left></left>
+            </div>
+            <div class="body-main">
+                <router-view></router-view>
+            </div>
         </div>
     </div>
 </template>
 <script>
+    import left from '../compoments/leftmenue.vue'
+    import bo from './user.vue'
     export default {
+        components: {
+            left,
+            bo
+        },
         data() {
             return {
-                time:null
+                time: null
             }
         },
         mounted() {
             var t = null;
-            let that=this;
+            let that = this;
             let dt;
             t = setTimeout(time, 1000); //開始运行
             function time() {
@@ -52,18 +62,17 @@
             }
         },
         methods: {
-            tuichu(){
+            tuichu() {
                 window.sessionStorage.removeItem('token')
                 this.$router.push('/login')
-            }   
-        }
+            }
+        },
     }
 </script>
 <style lang="less" scoped>
     .wrap {
         width: 100%;
         height: 100%;
-
     }
 
     header {
@@ -91,13 +100,34 @@
                 font-size: 30px;
                 color: white;
             }
-            .header-showtime{
+
+            .header-showtime {
                 font-size: 20px;
             }
         }
 
         .header-button {
             height: 60%;
+        }
+    }
+
+    .body {
+        width: 100%;
+        height: 700px;
+        display: flex;
+
+        .body-left {
+            // flex: 1.5;
+            width: 15%;
+            height: 700px;
+            position: relative;
+        }
+
+        .body-main {
+            // flex: 8.5;
+            height: 700px;
+            position: relative;
+            width: 85%;
         }
     }
 </style>
